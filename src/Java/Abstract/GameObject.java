@@ -1,5 +1,7 @@
 package Java.Abstract;
 
+import Java.Enums.ID;
+
 import java.awt.*;
 
 public abstract class GameObject {
@@ -9,9 +11,12 @@ public abstract class GameObject {
         protected float velocityX = 0;
         protected float velocityY = 0;
 
-        public GameObject(int x, int y) {
+        protected ID id;
+
+        public GameObject(int x, int y, ID id) {
                 this.x = x;
                 this.y = y;
+                this.id = id;
         }
 
         public abstract void tick();
@@ -48,5 +53,13 @@ public abstract class GameObject {
 
         public void setVelocityY(float velocityY) {
                 this.velocityY = velocityY;
+        }
+
+        public ID getId() {
+                return id;
+        }
+
+        public void setId(ID id) {
+                this.id = id;
         }
 }
