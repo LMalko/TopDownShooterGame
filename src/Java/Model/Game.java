@@ -12,7 +12,7 @@ public class Game extends Canvas implements Runnable{
     private ObjectHandler objectHandler;
 
     public void startApp(){
-        Window window = new Window(1000, 563, "Wizard game", this);
+        Window window = new Window(1000, 563, "Warlock Shooter", this);
         objectHandler = new ObjectHandler();
     }
 
