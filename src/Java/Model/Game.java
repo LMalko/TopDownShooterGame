@@ -17,6 +17,12 @@ public class Game extends Canvas implements Runnable{
     public void run() {
 
     }
+    
+    private void start(){
+        isRunning = true;
+        thread = new Thread(this);
+        thread.start();
+    }
 
     private void stop(){
         isRunning = false;
