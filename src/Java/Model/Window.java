@@ -1,5 +1,8 @@
 package Java.Model;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class Window {
 
     private int width;
@@ -12,5 +15,10 @@ public class Window {
         this.height = height;
         this.title = title;
         this.game = game;
+
+        JFrame frame = new JFrame(this.title);
+        frame.setPreferredSize(new Dimension(this.width, this.height));
+        frame.setMaximumSize(new Dimension(this.width, this.height));
+        frame.setMinimumSize(new Dimension(this.width, this.height));
     }
 }
