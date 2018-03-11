@@ -10,6 +10,11 @@ public class ObjectHandler {
 
         List<GameObject> objectsCollection = new LinkedList<>();
 
+        private boolean up = false;
+        private boolean down = false;
+        private boolean right = false;
+        private boolean left = false;
+
         public void tick(){
                 for (int i = 0; i < objectsCollection.size(); i++){
                         GameObject temporaryObject = objectsCollection.get(i);
