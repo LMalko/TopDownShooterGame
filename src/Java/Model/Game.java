@@ -5,7 +5,7 @@ import java.awt.Canvas;
 public class Game extends Canvas implements Runnable{
 
     public void startApp(){
-//will create Window object;
+        Window window = new Window(1000, 563, "Wizard game", this);
     }
 
     @Override
