@@ -9,5 +9,10 @@ public class Warlock extends GameObject{
                 super(x, y, id);
         }
 
-        
+        public void tick(){
+                x += velocityX;
+                y += velocityY;
+        }
+
+
 }
