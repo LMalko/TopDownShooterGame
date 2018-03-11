@@ -2,6 +2,7 @@ package Java.Model;
 
 import Java.Abstract.GameObject;
 
+import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,6 +14,13 @@ public class ObjectHandler {
                 for (int i = 0; i < objectsCollection.size(); i++){
                         GameObject temporaryObject = objectsCollection.get(i);
                         temporaryObject.tick();
+                }
+        }
+
+        public void render(Graphics graphics){
+                for (int i = 0; i < objectsCollection.size(); i++){
+                        GameObject temporaryObject = objectsCollection.get(i);
+                        temporaryObject.render(graphics);
                 }
         }
 }
