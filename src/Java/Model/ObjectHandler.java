@@ -8,4 +8,11 @@ import java.util.List;
 public class ObjectHandler {
 
         List<GameObject> objectsCollection = new LinkedList<>();
+
+        public void tick(){
+                for (int i = 0; i < objectsCollection.size(); i++){
+                        GameObject temporaryObject = objectsCollection.get(i);
+                        temporaryObject.tick();
+                }
+        }
 }
