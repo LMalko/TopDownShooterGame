@@ -23,4 +23,12 @@ public class ObjectHandler {
                         temporaryObject.render(graphics);
                 }
         }
+
+        public void addGameObject(GameObject gameObject){
+                objectsCollection.add(gameObject);
+        }
+
+        public void removeGameObject(GameObject gameObject){
+                objectsCollection.remove(gameObject);
+        }
 }
