@@ -1,6 +1,7 @@
 package Java.Model;
 
-import java.awt.Canvas;
+import java.awt.*;
+import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable{
 
@@ -22,7 +23,7 @@ public class Game extends Canvas implements Runnable{
             double delta = 0;
             long timer = System.currentTimeMillis();
             int frames = 0;
-            
+
             while(isRunning) {
                 long now = System.nanoTime();
                 delta += (now - lastTime) / ns;
@@ -43,6 +44,19 @@ public class Game extends Canvas implements Runnable{
             }
             stop();
         }﻿
+
+    public void render(){
+//        Render everything in the game
+        BufferStrategy bufferStrategy = this.getBufferStrategy();
+        if(bufferStrategy == null){
+            this.createBufferStrategy(3);
+            return;
+        }
+
+        Graphics graphics = bufferStrategy.getDrawGraphics();
+        graphics.dispose();
+        bufferStrategy.show();
+    }
 
     private void start(){
         isRunning = true;
