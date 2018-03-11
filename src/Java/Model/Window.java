@@ -15,10 +15,19 @@ public class Window {
         this.height = height;
         this.title = title;
         this.game = game;
+        setJFrame();
+    }
 
+    public void setJFrame(){
         JFrame frame = new JFrame(this.title);
         frame.setPreferredSize(new Dimension(this.width, this.height));
         frame.setMaximumSize(new Dimension(this.width, this.height));
         frame.setMinimumSize(new Dimension(this.width, this.height));
+
+        frame.add(this.game);
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 }
