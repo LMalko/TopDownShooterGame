@@ -8,10 +8,12 @@ import java.awt.*;
 public class Player extends GameObject{
 
         ObjectHandler handler;
+        private Game game;
 
-        public Player(int x, int y, ID id, ObjectHandler handler) {
+        public Player(int x, int y, ID id, ObjectHandler handler, Game game) {
                 super(x, y, id);
                 this.handler = handler;
+                this.game = game;
         }
 
         public void tick(){
@@ -55,6 +57,13 @@ public class Player extends GameObject{
                                 if(getBounds().intersects(tempObject.getBounds())){
                                         x += velocityX * -1;
                                         y += velocityY * -1;
+                                }
+                        }
+                        if(tempObject.getId() == ID.Crate){
+
+                                if(getBounds().intersects(tempObject.getBounds())){
+                                        game.reduceAmmo(-10);
+                                        handler.removeGameObject(tempObject);
                                 }
                         }
                 }

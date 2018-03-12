@@ -18,13 +18,17 @@ public class Game extends Canvas implements Runnable{
 
     private BufferedImage image = null;
 
-    private int ammo = 100;
+    private int ammo = 10;
 
     public static Game getGame() {
                 return new Game();
+    }
+
+        public int getAmmo() {
+                return ammo;
         }
 
-    public void startApp(){
+        public void startApp(){
         window = new Window(1000, 563, "Player Shooter", this);
         start();
         objectHandler = new ObjectHandler();
@@ -125,7 +129,7 @@ public class Game extends Canvas implements Runnable{
                                     objectHandler.addGameObject(new Block(xx*32, yy*32, ID.Block));
                             }
                             if (blue == 255 && green == 0){
-                                    objectHandler.addGameObject(new Player(xx*32, yy*32, ID.Player, objectHandler));
+                                    objectHandler.addGameObject(new Player(xx*32, yy*32, ID.Player, objectHandler, this));
                             }
                             if (green == 255 && blue == 0){
                                     objectHandler.addGameObject(new Enemy(xx*32, yy*32, ID.Enemy, objectHandler));

@@ -24,7 +24,7 @@ public class MouseInput extends MouseAdapter{
                 for(int i = 0; i < handler.objectsCollection.size(); i++){
                         GameObject tempObject = handler.objectsCollection.get(i);
 
-                        if(tempObject.getId() == ID.Player){
+                        if(tempObject.getId() == ID.Player && game.getAmmo() >= 1){
                                 handler.addGameObject(new Bullet(tempObject.getX()+ 16, tempObject.getY() + 24, ID.Bullet, handler, mouseX, mouseY));
                                 game.reduceAmmo(1);
                         }
