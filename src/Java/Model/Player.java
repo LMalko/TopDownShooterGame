@@ -62,7 +62,7 @@ public class Player extends GameObject{
 
         @Override
         public void render(Graphics graphics) {
-                graphics.setColor(Color.green);
+                graphics.setColor(Color.blue);
                 graphics.fillRect(this.x, this.y, 32, 48);
         }
 
