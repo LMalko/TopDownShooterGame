@@ -46,7 +46,7 @@ public class Warlock extends GameObject{
 
         @Override
         public void render(Graphics graphics) {
-                graphics.setColor(Color.GREEN);
+                graphics.setColor(Color.green);
                 graphics.fillRect(this.x, this.y, 32, 48);
         }
 
