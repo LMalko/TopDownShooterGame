@@ -4,16 +4,19 @@ import Java.Abstract.GameObject;
 import Java.Enums.ID;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Player extends GameObject{
 
         ObjectHandler handler;
         private Game game;
+        private BufferedImage playerImage;
 
         public Player(int x, int y, ID id, ObjectHandler handler, Game game, SpriteSheet spriteSheet) {
                 super(x, y, id, spriteSheet);
                 this.handler = handler;
                 this.game = game;
+                playerImage = spriteSheet.grabImage(1,1,32,48);
         }
 
         public void tick(){
@@ -71,8 +74,7 @@ public class Player extends GameObject{
 
         @Override
         public void render(Graphics graphics) {
-                graphics.setColor(Color.blue);
-                graphics.fillRect(this.x, this.y, 32, 48);
+                graphics.drawImage(playerImage,x,y,null);
         }
 
         @Override
