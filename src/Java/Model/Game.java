@@ -29,7 +29,7 @@ public class Game extends Canvas implements Runnable{
         }
 
         public void startApp(){
-        window = new Window(1000, 563, "Player Shooter", this);
+        window = new Window(1020, 600, "Player Shooter", this);
         start();
         objectHandler = new ObjectHandler();
         camera = new Camera(0, 0);
@@ -102,7 +102,7 @@ public class Game extends Canvas implements Runnable{
         Graphics2D graphics2d = (Graphics2D) graphics;
 
         graphics.setColor(Color.red);
-        graphics.fillRect(0, 0, 1000, 563);
+        graphics.fillRect(0, 0, 1020, 600);
 
         graphics2d.translate(-camera.getX(), -camera.getY());
 
