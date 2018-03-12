@@ -18,6 +18,8 @@ public class Game extends Canvas implements Runnable{
 
     private BufferedImage image = null;
 
+    private int ammo = 100;
+
     public static Game getGame() {
                 return new Game();
         }
@@ -29,13 +31,17 @@ public class Game extends Canvas implements Runnable{
         camera = new Camera(0, 0);
 
         this.addKeyListener(new KeyInput(objectHandler));
-        this.addMouseListener((new MouseInput(objectHandler, camera)));
+        this.addMouseListener((new MouseInput(objectHandler, camera, this)));
 
         BufferedImageLoader loader = new BufferedImageLoader();
         this.image = loader.loadImage("res/World.png");
 
         loadLevel(this.image);
 
+    }
+
+    public void reduceAmmo(int difference){
+            this.ammo -= difference;
     }
 
     @Override
