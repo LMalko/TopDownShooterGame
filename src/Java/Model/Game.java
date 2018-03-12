@@ -18,6 +18,10 @@ public class Game extends Canvas implements Runnable{
 
     private BufferedImage image = null;
 
+    public static Game getGame() {
+                return new Game();
+        }
+
     public void startApp(){
         window = new Window(1000, 563, "Player Shooter", this);
         start();
