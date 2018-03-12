@@ -19,27 +19,27 @@ public class Warlock extends GameObject{
                 y += velocityY;
 
                 if(handler.isUp()){
-                        velocityY -= 5;
+                        velocityY = -5;
                 }else if(!handler.isDown()){
                         velocityY = 0;
                 }
 
                 if(handler.isDown()){
-                        velocityY -= 5;
+                        velocityY = 5;
                 }else if(!handler.isUp()){
                         velocityY = 0;
                 }
 
                 if(handler.isLeft()){
-                        velocityY -= 5;
+                        velocityX = -5;
                 }else if(!handler.isRight()){
-                        velocityY = 0;
+                        velocityX = 0;
                 }
 
                 if(handler.isRight()){
-                        velocityY -= 5;
+                        velocityX = 5;
                 }else if(!handler.isLeft()){
-                        velocityY = 0;
+                        velocityX = 0;
                 }
 
         }
