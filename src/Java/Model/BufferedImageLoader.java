@@ -8,7 +8,7 @@ public class BufferedImageLoader {
 
         private BufferedImage image;
 
-        private BufferedImage loadImage(String path){
+        public BufferedImage loadImage(String path){
 
                 try {
                         image = ImageIO.read(getClass().getResource(path));
@@ -18,5 +18,5 @@ public class BufferedImageLoader {
                 return image;
 
         }
-        
+
 }
