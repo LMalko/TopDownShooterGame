@@ -4,11 +4,15 @@ import Java.Abstract.GameObject;
 import Java.Enums.ID;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Crate extends GameObject{
 
+        private BufferedImage crateImage;
+
         public Crate(int x, int y, ID id, SpriteSheet spriteSheet) {
                 super(x, y, id, spriteSheet);
+                crateImage = spriteSheet.grabImage(6,2,32,32);
         }
 
         @Override
@@ -18,8 +22,7 @@ public class Crate extends GameObject{
 
         @Override
         public void render(Graphics graphics) {
-                graphics.setColor(Color.cyan);
-                graphics.fillRect(x, y, 32, 32);
+                graphics.drawImage(crateImage,x,y,null);
 
         }
 
