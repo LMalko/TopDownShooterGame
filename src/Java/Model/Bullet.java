@@ -22,6 +22,16 @@ public class Bullet extends GameObject{
                 x += velocityX;
                 y += velocityY;
 
+//                Prevent shooting through blocks.
+                for(int i = 0; i < handler.objectsCollection.size(); i++){
+                        GameObject tempObject = handler.objectsCollection.get(i);
+                        if(tempObject.getId() == ID.Block){
+                                if(getBounds().intersects(tempObject.getBounds())){
+                                        handler.removeGameObject(this);
+                                }
+                        }
+                }
+
 
         }
 
