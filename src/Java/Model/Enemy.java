@@ -31,15 +31,11 @@ public class Enemy extends GameObject {
                                 if(getBoundsBig().intersects(tempObject.getBounds())){
                                         velocityX += (velocityX*2) * -1;
                                         velocityY += (velocityY*2) * -1;
-
-
+                                }else if(choose == 0){
+                                        velocityX = (random.nextInt( 4 - -4) + -4);
+                                        velocityY = (random.nextInt( 4 - -4) + -4);
                                 }
                         }
-                }
-
-                if(choose == 0){
-                        velocityX = (random.nextInt( 4 - -4) + -4);
-                        velocityY = (random.nextInt( 4 - -4) + -4);
                 }
         }
 
