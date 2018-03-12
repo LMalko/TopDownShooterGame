@@ -76,6 +76,15 @@ public class Player extends GameObject{
                                         handler.removeGameObject(tempObject);
                                 }
                         }
+                        if(tempObject.getId() == ID.Enemy){
+
+                                if(getBounds().intersects(tempObject.getBounds())){
+                                        game.reduceHealth((1));
+                                }
+                        }
+                        if(game.getHp() <= 0){
+                                System.exit(0);
+                        }
                 }
         }
 

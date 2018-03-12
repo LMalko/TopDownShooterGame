@@ -23,7 +23,7 @@ public class Game extends Canvas implements Runnable{
     private BufferedImage bufferedImage= null;
 
     private int ammo = 30;
-    public int hp = 100;
+    private int hp = 100;
 
     public static Game getGame() {
                 return new Game();
@@ -60,7 +60,15 @@ public class Game extends Canvas implements Runnable{
             this.ammo -= difference;
     }
 
-    @Override
+    public void reduceHealth(int difference){
+                this.hp -= difference;
+    }
+
+    public int getHp() {
+                return hp;
+    }
+
+        @Override
     public void run() {
         this.requestFocus();
         long lastTime = System.nanoTime();
