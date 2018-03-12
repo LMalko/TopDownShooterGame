@@ -36,6 +36,15 @@ public class Enemy extends GameObject {
                                         velocityY = (random.nextInt( 4 - -4) + -4);
                                 }
                         }
+                        if(tempObject.getId() == ID.Bullet){
+                                if(getBoundsBig().intersects(tempObject.getBounds())) {
+                                        hp -= 50;
+                                        handler.removeGameObject(tempObject);
+                                }
+                        }
+                        if(hp == 0){
+                                handler.removeGameObject(this);
+                        }
                 }
         }
 
