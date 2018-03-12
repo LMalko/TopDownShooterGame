@@ -4,6 +4,7 @@ import Java.Enums.ID;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 public class Game extends Canvas implements Runnable{
 
@@ -14,11 +15,18 @@ public class Game extends Canvas implements Runnable{
     private ObjectHandler objectHandler;
     private Window window;
 
+    private BufferedImage image = null;
+
     public void startApp(){
         window = new Window(1000, 563, "Player Shooter", this);
         start();
         objectHandler = new ObjectHandler();
         this.addKeyListener(new KeyInput(objectHandler));
+
+        BufferedImageLoader loader = new BufferedImageLoader();
+        this.image = loader.loadImage("res/dupa.bmp");
+
+
         objectHandler.addGameObject(new Player(100, 100, ID.Player, objectHandler));
     }
 
