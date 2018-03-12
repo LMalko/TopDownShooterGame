@@ -23,7 +23,9 @@ public class Game extends Canvas implements Runnable{
         start();
         objectHandler = new ObjectHandler();
         camera = new Camera(0, 0);
+
         this.addKeyListener(new KeyInput(objectHandler));
+        this.addMouseListener((new MouseInput(objectHandler, camera)));
 
         BufferedImageLoader loader = new BufferedImageLoader();
         this.image = loader.loadImage("res/World.png");
