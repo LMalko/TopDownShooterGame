@@ -16,6 +16,7 @@ public class Game extends Canvas implements Runnable{
     private Window window;
     private Camera camera;
     private SpriteSheet spriteSheet;
+    private BufferedImage floor = null;
 
 
     private BufferedImage image = null;
@@ -45,6 +46,8 @@ public class Game extends Canvas implements Runnable{
         this.bufferedImage = loader.loadImage("res/Sprites.png");
 
         this.spriteSheet = new SpriteSheet(this.bufferedImage);
+
+        floor = this.spriteSheet.grabImage(4,2, 32, 32);
 
         this.addMouseListener((new MouseInput(objectHandler, camera, this, this.spriteSheet)));
 
@@ -109,10 +112,13 @@ public class Game extends Canvas implements Runnable{
         Graphics graphics = bufferStrategy.getDrawGraphics();
         Graphics2D graphics2d = (Graphics2D) graphics;
 
-        graphics.setColor(Color.red);
-        graphics.fillRect(0, 0, 1020, 600);
-
         graphics2d.translate(-camera.getX(), -camera.getY());
+
+        for(int xx = 0; xx < 30 * 72; xx += 32){
+                for(int yy = 0; yy < 30 *72; yy += 32){
+                        graphics.drawImage(floor, xx, yy, null);
+                }
+        }
 
         objectHandler.render(graphics);
 
