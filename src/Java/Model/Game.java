@@ -23,6 +23,7 @@ public class Game extends Canvas implements Runnable{
     private BufferedImage bufferedImage= null;
 
     private int ammo = 30;
+    public int hp = 100;
 
     public static Game getGame() {
                 return new Game();
@@ -119,10 +120,20 @@ public class Game extends Canvas implements Runnable{
                         graphics.drawImage(floor, xx, yy, null);
                 }
         }
-
         objectHandler.render(graphics);
 
         graphics2d.translate(camera.getX(), camera.getY());
+
+//        Bar.
+            graphics.setColor(Color.gray);
+            graphics.fillRect(5,5,200,32);
+            graphics.setColor(Color.green);
+            graphics.fillRect(5,5,hp*2,32);
+            graphics.setColor(Color.black);
+            graphics.drawRect(5,5,200,32);
+
+            graphics.setColor(Color.white);
+            graphics.drawString("Ammunition: " + ammo, 5, 50);
 
         graphics.dispose();
         bufferStrategy.show();
