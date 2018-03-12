@@ -13,8 +13,8 @@ public class Enemy extends GameObject {
         int choose = 0;
         int hp = 100;
 
-        public Enemy(int x, int y, ID id, ObjectHandler handler) {
-                super(x, y, id);
+        public Enemy(int x, int y, ID id, ObjectHandler handler, SpriteSheet spriteSheet) {
+                super(x, y, id, spriteSheet);
                 this.handler = handler;
         }
 

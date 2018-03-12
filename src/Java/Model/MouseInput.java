@@ -11,21 +11,24 @@ public class MouseInput extends MouseAdapter{
         private ObjectHandler handler;
         private Camera camera;
         private Game game;
+        private SpriteSheet spriteSheet;
 
-        public MouseInput(ObjectHandler handler, Camera camera, Game game){
+        public MouseInput(ObjectHandler handler, Camera camera, Game game, SpriteSheet spriteSheet){
                 this.handler = handler;
                 this.camera = camera;
                 this.game = game;
+                this.spriteSheet = spriteSheet;
+
         }
         public void mousePressed (MouseEvent event){
                 int mouseX = (int) (event.getX() + camera.getX());
                 int mouseY = (int) (event.getY() + camera.getY());
 
                 for(int i = 0; i < handler.objectsCollection.size(); i++){
-                        GameObject tempObject = handler.objectsCollection.get(i);
+                        GameObject tempObj = handler.objectsCollection.get(i);
 
-                        if(tempObject.getId() == ID.Player && game.getAmmo() >= 1){
-                                handler.addGameObject(new Bullet(tempObject.getX()+ 16, tempObject.getY() + 24, ID.Bullet, handler, mouseX, mouseY));
+                        if(tempObj.getId() == ID.Player && game.getAmmo() >= 1){
+                                handler.addGameObject(new Bullet(tempObj.getX()+ 16, tempObj.getY() + 24, ID.Bullet, handler, mouseX, mouseY, this.spriteSheet ));
                                 game.reduceAmmo(1);
                         }
                 }

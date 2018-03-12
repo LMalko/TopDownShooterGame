@@ -9,8 +9,8 @@ public class Bullet extends GameObject{
 
         private ObjectHandler handler;
 
-        public Bullet(int x, int y, ID id, ObjectHandler handler, int mouseX, int mouseY) {
-                super(x, y, id);
+        public Bullet(int x, int y, ID id, ObjectHandler handler, int mouseX, int mouseY, SpriteSheet spriteSheet) {
+                super(x, y, id, spriteSheet);
                 this.handler = handler;
 //                Velocity.
                 velocityX = (mouseX - x) / 10;

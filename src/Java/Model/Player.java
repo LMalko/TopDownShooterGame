@@ -10,8 +10,8 @@ public class Player extends GameObject{
         ObjectHandler handler;
         private Game game;
 
-        public Player(int x, int y, ID id, ObjectHandler handler, Game game) {
-                super(x, y, id);
+        public Player(int x, int y, ID id, ObjectHandler handler, Game game, SpriteSheet spriteSheet) {
+                super(x, y, id, spriteSheet);
                 this.handler = handler;
                 this.game = game;
         }
@@ -62,7 +62,7 @@ public class Player extends GameObject{
                         if(tempObject.getId() == ID.Crate){
 
                                 if(getBounds().intersects(tempObject.getBounds())){
-                                        game.reduceAmmo(-10);
+                                        game.reduceAmmo(-30);
                                         handler.removeGameObject(tempObject);
                                 }
                         }

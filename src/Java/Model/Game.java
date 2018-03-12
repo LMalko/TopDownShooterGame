@@ -15,10 +15,13 @@ public class Game extends Canvas implements Runnable{
     private ObjectHandler objectHandler;
     private Window window;
     private Camera camera;
+    private SpriteSheet spriteSheet;
+
 
     private BufferedImage image = null;
+    private BufferedImage bufferedImage= null;
 
-    private int ammo = 10;
+    private int ammo = 30;
 
     public static Game getGame() {
                 return new Game();
@@ -35,10 +38,15 @@ public class Game extends Canvas implements Runnable{
         camera = new Camera(0, 0);
 
         this.addKeyListener(new KeyInput(objectHandler));
-        this.addMouseListener((new MouseInput(objectHandler, camera, this)));
+
 
         BufferedImageLoader loader = new BufferedImageLoader();
         this.image = loader.loadImage("res/World.png");
+        this.bufferedImage = loader.loadImage("res/Sprites.png");
+
+        this.spriteSheet = new SpriteSheet(this.bufferedImage);
+
+        this.addMouseListener((new MouseInput(objectHandler, camera, this, this.spriteSheet)));
 
         loadLevel(this.image);
 
@@ -126,16 +134,16 @@ public class Game extends Canvas implements Runnable{
                             int blue = (pixel) & 0xff;
 
                             if (red == 255){
-                                    objectHandler.addGameObject(new Block(xx*32, yy*32, ID.Block));
+                                    objectHandler.addGameObject(new Block(xx*32, yy*32, ID.Block, this.spriteSheet));
                             }
                             if (blue == 255 && green == 0){
-                                    objectHandler.addGameObject(new Player(xx*32, yy*32, ID.Player, objectHandler, this));
+                                    objectHandler.addGameObject(new Player(xx*32, yy*32, ID.Player, objectHandler, this, this.spriteSheet));
                             }
                             if (green == 255 && blue == 0){
-                                    objectHandler.addGameObject(new Enemy(xx*32, yy*32, ID.Enemy, objectHandler));
+                                    objectHandler.addGameObject(new Enemy(xx*32, yy*32, ID.Enemy, objectHandler, this.spriteSheet));
                             }
                             if (blue == 255 && green == 255){
-                                    objectHandler.addGameObject(new Crate(xx*32, yy*32, ID.Crate));
+                                    objectHandler.addGameObject(new Crate(xx*32, yy*32, ID.Crate, this.spriteSheet));
                             }
                     }
             }
