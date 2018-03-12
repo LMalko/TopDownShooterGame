@@ -13,7 +13,7 @@ public class Player extends GameObject{
         private BufferedImage[] playerImage = new BufferedImage[3];
         private Animation anim;
 
-        public Player(int x, int y, ID id, ObjectHandler handler, Game game, SpriteSheet spriteSheet) {
+        Player(int x, int y, ID id, ObjectHandler handler, Game game, SpriteSheet spriteSheet) {
                 super(x, y, id, spriteSheet);
                 this.handler = handler;
                 this.game = game;

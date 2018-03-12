@@ -13,7 +13,7 @@ public class MouseInput extends MouseAdapter{
         private Game game;
         private SpriteSheet spriteSheet;
 
-        public MouseInput(ObjectHandler handler, Camera camera, Game game, SpriteSheet spriteSheet){
+        MouseInput(ObjectHandler handler, Camera camera, Game game, SpriteSheet spriteSheet){
                 this.handler = handler;
                 this.camera = camera;
                 this.game = game;

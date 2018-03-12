@@ -10,7 +10,7 @@ public class Crate extends GameObject{
 
         private BufferedImage crateImage;
 
-        public Crate(int x, int y, ID id, SpriteSheet spriteSheet) {
+        Crate(int x, int y, ID id, SpriteSheet spriteSheet) {
                 super(x, y, id, spriteSheet);
                 crateImage = spriteSheet.grabImage(6,2,32,32);
         }

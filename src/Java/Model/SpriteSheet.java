@@ -6,7 +6,7 @@ public class SpriteSheet {
 
         private BufferedImage image;
 
-        public SpriteSheet(BufferedImage image) {
+        SpriteSheet(BufferedImage image) {
                 this.image = image;
         }
 

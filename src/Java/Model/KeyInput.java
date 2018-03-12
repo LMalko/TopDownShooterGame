@@ -10,7 +10,7 @@ public class KeyInput extends KeyAdapter{
 
         ObjectHandler handler;
 
-        public KeyInput(ObjectHandler handler) {
+        KeyInput(ObjectHandler handler) {
                 this.handler = handler;
         }
 

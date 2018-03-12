@@ -9,7 +9,7 @@ public class Bullet extends GameObject{
 
         private ObjectHandler handler;
 
-        public Bullet(int x, int y, ID id, ObjectHandler handler, int mouseX, int mouseY, SpriteSheet spriteSheet) {
+        Bullet(int x, int y, ID id, ObjectHandler handler, int mouseX, int mouseY, SpriteSheet spriteSheet) {
                 super(x, y, id, spriteSheet);
                 this.handler = handler;
 //                Velocity.
@@ -31,8 +31,6 @@ public class Bullet extends GameObject{
                                 }
                         }
                 }
-
-
         }
 
         @Override

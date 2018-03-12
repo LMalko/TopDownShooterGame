@@ -10,13 +10,13 @@ import java.util.Random;
 public class Enemy extends GameObject {
 
         private ObjectHandler handler;
-        Random random = new Random();
-        int choose = 0;
-        int hp = 100;
+        private Random random = new Random();
+        private int choose = 0;
+        private int hp = 100;
         private BufferedImage[] enemyImage = new BufferedImage[3];
         private Animation anim;
 
-        public Enemy(int x, int y, ID id, ObjectHandler handler, SpriteSheet spriteSheet) {
+        Enemy(int x, int y, ID id, ObjectHandler handler, SpriteSheet spriteSheet) {
                 super(x, y, id, spriteSheet);
                 this.handler = handler;
                 enemyImage[0] = spriteSheet.grabImage(4,1,32,32);
@@ -71,7 +71,7 @@ public class Enemy extends GameObject {
                 return new Rectangle(x, y, 32, 32);
         }
 
-        public Rectangle getBoundsBig(){
+        private Rectangle getBoundsBig(){
                 return new Rectangle(x -16, y -16, 64, 64);
         }
 }
