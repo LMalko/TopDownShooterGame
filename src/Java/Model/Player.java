@@ -10,13 +10,18 @@ public class Player extends GameObject{
 
         ObjectHandler handler;
         private Game game;
-        private BufferedImage playerImage;
+        private BufferedImage[] playerImage = new BufferedImage[3];
+        private Animation anim;
 
         public Player(int x, int y, ID id, ObjectHandler handler, Game game, SpriteSheet spriteSheet) {
                 super(x, y, id, spriteSheet);
                 this.handler = handler;
                 this.game = game;
-                playerImage = spriteSheet.grabImage(1,1,32,48);
+
+                playerImage[0] = spriteSheet.grabImage(1,1,32,48);
+                playerImage[1] = spriteSheet.grabImage(2,1,32,48);
+                playerImage[2] = spriteSheet.grabImage(3,1,32,48);
+                anim = new Animation(3, playerImage[0], playerImage[1], playerImage[2]);
         }
 
         public void tick(){
@@ -49,6 +54,8 @@ public class Player extends GameObject{
                         velocityX = 0;
                 }
 
+                anim.runAnimation();
+
         }
 
         private void collision(){
@@ -74,7 +81,12 @@ public class Player extends GameObject{
 
         @Override
         public void render(Graphics graphics) {
-                graphics.drawImage(playerImage,x,y,null);
+                if(velocityX == 0 && velocityY == 0){
+                        graphics.drawImage(playerImage[0],x,y,null);
+                }else{
+                        anim.drawAnimation(graphics,x,y,0);
+                }
+
         }
 
         @Override
