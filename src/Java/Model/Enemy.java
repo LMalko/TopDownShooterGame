@@ -13,12 +13,16 @@ public class Enemy extends GameObject {
         Random random = new Random();
         int choose = 0;
         int hp = 100;
-        private BufferedImage enemyImage;
+        private BufferedImage[] enemyImage = new BufferedImage[3];
+        private Animation anim;
 
         public Enemy(int x, int y, ID id, ObjectHandler handler, SpriteSheet spriteSheet) {
                 super(x, y, id, spriteSheet);
                 this.handler = handler;
-                enemyImage = spriteSheet.grabImage(4,1,32,32);
+                enemyImage[0] = spriteSheet.grabImage(4,1,32,32);
+                enemyImage[1] = spriteSheet.grabImage(5,1,32,32);
+                enemyImage[2] = spriteSheet.grabImage(6,1,32,32);
+                anim = new Animation(3, enemyImage[0], enemyImage[1], enemyImage[2]);
         }
 
         @Override
@@ -49,11 +53,16 @@ public class Enemy extends GameObject {
                                 handler.removeGameObject(this);
                         }
                 }
+                anim.runAnimation();
         }
 
         @Override
         public void render(Graphics graphics) {
-                graphics.drawImage(enemyImage,x,y,null);
+                if(velocityX == 0 && velocityY == 0){
+                        graphics.drawImage(enemyImage[0],x,y,null);
+                }else{
+                        anim.drawAnimation(graphics,x,y,0);
+                }
 
         }
 
