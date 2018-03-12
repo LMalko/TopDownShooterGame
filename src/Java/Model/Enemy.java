@@ -4,6 +4,7 @@ import Java.Abstract.GameObject;
 import Java.Enums.ID;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 public class Enemy extends GameObject {
@@ -12,10 +13,12 @@ public class Enemy extends GameObject {
         Random random = new Random();
         int choose = 0;
         int hp = 100;
+        private BufferedImage enemyImage;
 
         public Enemy(int x, int y, ID id, ObjectHandler handler, SpriteSheet spriteSheet) {
                 super(x, y, id, spriteSheet);
                 this.handler = handler;
+                enemyImage = spriteSheet.grabImage(4,1,32,32);
         }
 
         @Override
@@ -50,8 +53,7 @@ public class Enemy extends GameObject {
 
         @Override
         public void render(Graphics graphics) {
-                graphics.setColor(Color.green);
-                graphics.fillRect(x, y, 32, 32);
+                graphics.drawImage(enemyImage,x,y,null);
 
         }
 
