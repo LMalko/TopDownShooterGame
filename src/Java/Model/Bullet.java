@@ -38,7 +38,7 @@ public class Bullet extends GameObject{
         @Override
         public void render(Graphics graphics) {
 
-                graphics.setColor(Color.blue);
+                graphics.setColor(Color.yellow);
                 graphics.fillOval(x, y, 8, 8);
         }
 
