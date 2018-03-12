@@ -16,13 +16,15 @@ public class ObjectHandler {
         private boolean left = false;
 
         public void tick(){
-                for (GameObject temporaryObject : objectsCollection) {
+                for (int i = 0; i < objectsCollection.size(); i++){
+                        GameObject temporaryObject = objectsCollection.get(i);
                         temporaryObject.tick();
                 }
         }
 
         public void render(Graphics graphics){
-                for (GameObject temporaryObject : objectsCollection) {
+                for (int i = 0; i < objectsCollection.size(); i++){
+                        GameObject temporaryObject = objectsCollection.get(i);
                         temporaryObject.render(graphics);
                 }
         }
