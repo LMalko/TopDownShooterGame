@@ -24,10 +24,10 @@ public class Game extends Canvas implements Runnable{
         this.addKeyListener(new KeyInput(objectHandler));
 
         BufferedImageLoader loader = new BufferedImageLoader();
-        this.image = loader.loadImage("res/dupa.bmp");
+        this.image = loader.loadImage("res/World.png");
 
+        loadLevel(this.image);
 
-        objectHandler.addGameObject(new Player(100, 100, ID.Player, objectHandler));
     }
 
     @Override
@@ -82,6 +82,27 @@ public class Game extends Canvas implements Runnable{
         objectHandler.render(graphics);
         graphics.dispose();
         bufferStrategy.show();
+    }
+
+    private void loadLevel(BufferedImage image){
+            int width = image.getWidth();
+            int height = image.getHeight();
+
+            for(int xx = 0; xx < width; xx++){
+                    for(int yy = 0; yy < height; yy++){
+                            int pixel = image.getRGB(xx, yy);
+                            int red = (pixel >> 16) & 0xff;
+                            int green = (pixel >> 8) & 0xff;
+                            int blue = (pixel) & 0xff;
+
+                            if (red == 255){
+                                    objectHandler.addGameObject(new Block(xx*32, yy*32, ID.Block));
+                            }
+                            if (blue == 255){
+                                    objectHandler.addGameObject(new Player(xx*32, yy*32, ID.Player, objectHandler));
+                            }
+                    }
+            }
     }
 
     private void start(){
