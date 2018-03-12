@@ -18,6 +18,8 @@ public class Player extends GameObject{
                 x += velocityX;
                 y += velocityY;
 
+                collision();
+
                 if(handler.isUp()){
                         velocityY = -5;
                 }else if(!handler.isDown()){
@@ -42,6 +44,20 @@ public class Player extends GameObject{
                         velocityX = 0;
                 }
 
+        }
+
+        private void collision(){
+                for(int i = 0; i < handler.objectsCollection.size(); i++){
+                        GameObject tempObject = handler.objectsCollection.get(i);
+
+                        if(tempObject.getId() == ID.Block){
+
+                                if(getBounds().intersects(tempObject.getBounds())){
+                                        x += velocityX * -1;
+                                        y += velocityY * -1;
+                                }
+                        }
+                }
         }
 
         @Override
