@@ -14,6 +14,7 @@ public class Game extends Canvas implements Runnable{
     private Thread thread;
     private ObjectHandler objectHandler;
     private Window window;
+    private Camera camera;
 
     private BufferedImage image = null;
 
@@ -21,6 +22,7 @@ public class Game extends Canvas implements Runnable{
         window = new Window(1000, 563, "Player Shooter", this);
         start();
         objectHandler = new ObjectHandler();
+        camera = new Camera(0, 0);
         this.addKeyListener(new KeyInput(objectHandler));
 
         BufferedImageLoader loader = new BufferedImageLoader();
@@ -63,6 +65,12 @@ public class Game extends Canvas implements Runnable{
 
     public void tick(){
         /* Update everything in the game. */
+
+        for(int i = 0; i < objectHandler.objectsCollection.size(); i++){
+                if(objectHandler.objectsCollection.get(i).getId() == ID.Player){
+                        camera.tick(objectHandler.objectsCollection.get(i));
+                }
+        }
         objectHandler.tick();
     }
 
@@ -75,11 +83,17 @@ public class Game extends Canvas implements Runnable{
         }
 
         Graphics graphics = bufferStrategy.getDrawGraphics();
+        Graphics2D graphics2d = (Graphics2D) graphics;
 
         graphics.setColor(Color.red);
         graphics.fillRect(0, 0, 1000, 563);
 
+        graphics2d.translate(-camera.getX(), -camera.getY());
+
         objectHandler.render(graphics);
+
+        graphics2d.translate(camera.getX(), camera.getY());
+
         graphics.dispose();
         bufferStrategy.show();
     }
