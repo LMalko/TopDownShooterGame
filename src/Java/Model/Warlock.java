@@ -46,12 +46,13 @@ public class Warlock extends GameObject{
 
         @Override
         public void render(Graphics graphics) {
-
+                graphics.setColor(Color.GREEN);
+                graphics.fillRect(this.x, this.y, 32, 48);
         }
 
         @Override
         public Rectangle getBounds() {
-                return null;
+                return new Rectangle(this.x, this.y,32,48);
         }
 
 
