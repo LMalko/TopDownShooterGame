@@ -15,11 +15,11 @@ public class Game extends Canvas implements Runnable{
     private Window window;
 
     public void startApp(){
-        window = new Window(1000, 563, "Warlock Shooter", this);
+        window = new Window(1000, 563, "Player Shooter", this);
         start();
         objectHandler = new ObjectHandler();
         this.addKeyListener(new KeyInput(objectHandler));
-        objectHandler.addGameObject(new Warlock(100, 100, ID.Player, objectHandler));
+        objectHandler.addGameObject(new Player(100, 100, ID.Player, objectHandler));
     }
 
     @Override

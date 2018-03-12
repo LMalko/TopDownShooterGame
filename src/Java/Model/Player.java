@@ -5,11 +5,11 @@ import Java.Enums.ID;
 
 import java.awt.*;
 
-public class Warlock extends GameObject{
+public class Player extends GameObject{
 
         ObjectHandler handler;
 
-        public Warlock(int x, int y, ID id, ObjectHandler handler) {
+        public Player(int x, int y, ID id, ObjectHandler handler) {
                 super(x, y, id);
                 this.handler = handler;
         }
