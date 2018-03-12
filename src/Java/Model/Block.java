@@ -4,11 +4,15 @@ import Java.Abstract.GameObject;
 import Java.Enums.ID;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Block extends GameObject{
 
+        private BufferedImage blockImage;
+
         public Block(int x, int y, ID id, SpriteSheet spriteSheet) {
                 super(x, y, id, spriteSheet);
+                blockImage = spriteSheet.grabImage(5,2,32,32);
         }
 
         @Override
@@ -18,8 +22,7 @@ public class Block extends GameObject{
 
         @Override
         public void render(Graphics graphics) {
-                graphics.setColor(Color.black);
-                graphics.fillRect(x,y,32,32);
+                graphics.drawImage(blockImage,x,y,null);
         }
 
         @Override
