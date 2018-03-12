@@ -1,5 +1,7 @@
 package Java.Model;
 
+import Java.Enums.ID;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
@@ -10,11 +12,14 @@ public class Game extends Canvas implements Runnable{
     private boolean isRunning = false;
     private Thread thread;
     private ObjectHandler objectHandler;
+    private Window window;
 
     public void startApp(){
-        Window window = new Window(1000, 563, "Warlock Shooter", this);
+        window = new Window(1000, 563, "Warlock Shooter", this);
+        start();
         objectHandler = new ObjectHandler();
         this.addKeyListener(new KeyInput(objectHandler));
+        objectHandler.addGameObject(new Warlock(100, 100, ID.Player, objectHandler));
     }
 
     @Override
@@ -62,6 +67,10 @@ public class Game extends Canvas implements Runnable{
         }
 
         Graphics graphics = bufferStrategy.getDrawGraphics();
+
+        graphics.setColor(Color.red);
+        graphics.fillRect(0, 0, 1000, 563);
+
         objectHandler.render(graphics);
         graphics.dispose();
         bufferStrategy.show();
